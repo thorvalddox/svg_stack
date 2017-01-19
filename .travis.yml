@@ -1,8 +1,7 @@
-addons:
-  apt:
-    sources:
-    - libxml2-utils
-    - python-matplotlib
+sudo: required
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libxml2-dev libxml2-utils python-matplotlib
 language: python
 python:
   - "2.7"
