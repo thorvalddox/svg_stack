@@ -40,6 +40,8 @@ relIRI_re = re.compile(r'url\(#(.*)\)')
 def get_unit_attr(value):
     # coordinate handling from http://www.w3.org/TR/SVG11/coords.html#Units
     units = None # default (user)
+    if value is None:
+        return 0.0, 'px'
     for unit_name in UNITS:
         if value.endswith(unit_name):
             units = unit_name
