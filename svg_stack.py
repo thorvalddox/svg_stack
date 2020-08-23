@@ -160,18 +160,14 @@ class Document(object):
             raise ValueError('No layout, cannot save.')
         accum = LayoutAccumulator(**kwargs)
         self._layout.render(accum,debug_boxes=debug_boxes)
-        if isinstance(fileobj,file):
-            fd = fileobj
-            close = False
-        else:
-            fd = open(fileobj,mode='w')
-            close = True
+
+        fd = fileobj
+
         buf = accum.tostring(pretty_print=True)
 
         fd.write(header_str)
         fd.write( buf )
-        if close:
-            fd.close()
+
 
 class SVGFileBase(object):
     def __init__(self,fname):
